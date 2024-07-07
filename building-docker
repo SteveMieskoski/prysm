@@ -1,0 +1,9 @@
+# Beacon node
+#Change line: cmd/beacon-chain/BUILD.bazel:76 to    repository = "local/prysmaticlabs/prysm/beacon-chain",
+bazel build //cmd/beacon-chain:oci_image_tarball --config=release
+docker load -i bazel-bin/cmd/beacon-chain/oci_image_tarball/tarball.tar
+
+# Validator client
+#Change line: cmd/validator/BUILD.bazel:63 to     repository = "local/prysmaticlabs/prysm/validator",
+bazel build //cmd/validator:oci_image_tarball --config=release
+docker load -i bazel-bin/cmd/validator/oci_image_tarball/tarball.tar
